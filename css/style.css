@@ -1,0 +1,90 @@
+p,h1,h1,h3{
+    font-family: Georgia, sans-serif;
+}
+body{
+    background: url(images/background-step1.png) no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.section{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: rgba(0,0,0,0.3);
+    display: table;
+}
+.section .content{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.section .section-head{
+    padding-top: 60px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.section .section-head span.step{
+    width: 433px;
+    height: 386px;
+    line-height: 386px;
+    text-align: center;
+    display: block;
+    background: url(images/bg-step.png) no-repeat center center;
+    color: rgba(174,223,94,0.4);
+    font-size: 12.500em;
+    position: absolute;
+    left: 50%;
+    margin-left:-216px;
+    top: -155px;
+    z-index: 1;
+}
+.section .section-title{
+    color: white;
+    font-size: 2.188em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    line-height: 45px;
+}
+.section span.colored{
+    color: #addf5e;
+}
+
+.section .section-head:after{
+    content:"";
+    height: 1px;
+    width: 200px;
+    display: block;
+    background: rgba(255,255,255,0.6);
+    margin: 70px auto 0 auto;
+}
+.section .content .text p{
+    color: white;
+    font-size: 0.875em;
+    line-height: 20px;
+    display: block;
+    margin: 15px 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.section .content .text.classic{
+    width: 900px;
+    margin: auto;
+}
+.section .content .text.classic p{
+    text-align: center;
+}
+.section .content .text.classic>div{
+    display: inline-block;
+}
+.section .content .text.column{
+    text-align: center;
+}
+.section .content .text.column>div{
+    display: inline-block;
+    width: 450px;
+    margin: 0 40px;
+    vertical-align: top;
+}
+.section .content .text.column p{
+    text-align: justify;
+}
