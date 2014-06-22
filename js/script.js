@@ -1,3 +1,5 @@
+$currentSection = 1;
+$navEnabled = false;
 
 $(document).ready(function() {
 
@@ -15,6 +17,8 @@ $(document).ready(function() {
 	});
 
 	app_router.on('route:section', function (id) {
+		$navEnabled = false;
+		$currentSection = parseInt(id);
 		console.log("id : "+id);
 		if($("body").attr("class") == undefined){
 			initBg(id);
@@ -25,6 +29,7 @@ $(document).ready(function() {
 	});
 
 	function initBg(id){
+		$("#section"+id).css({"display":"table", "opacity":1});
 		$.each($(".oneBg .bg"),function(){
 			if($(this).hasClass("bg-"+id)){
 				$(this).addClass("active");
@@ -32,7 +37,33 @@ $(document).ready(function() {
 				$(this).addClass("inactive");
 			}
 		});
+		$navEnabled = true;
 	}
+	
+	$(window).bind('mousewheel', function(event){
+		if($navEnabled == true){
+		    if(event.originalEvent.wheelDelta >= 0){
+		    	$newId = $currentSection-1 ;
+		    	if($newId>0){
+		    		app_router.navigate("section/"+$newId, {trigger: true});
+		    	}
+		    }else{
+		    	$newId = $currentSection+1 ;
+		    	if($newId<=3){
+		        	app_router.navigate("section/"+$newId, {trigger: true});
+		        }
+		    }
+		}
+	});
+
+	$('a[href^="#"]').click(function(e) {
+		e.preventDefault();
+		if($navEnabled == true){
+			$link = $(this).attr('href');
+			app_router.navigate($link, {trigger: true});
+		}
+    	return false;
+    });
 
 	function moveBg(id){
 		$counter = 0;
@@ -71,6 +102,7 @@ $(document).ready(function() {
 			$(".oneBg .pre-active").removeClass("pre-active").addClass("active");
 			$(".oneBg .inactive").css({top : "0", left: "0"});
 			$("#section"+id).css("display","table").animate({opacity:1},300);
+			$navEnabled = true;
 		}
 	}
 

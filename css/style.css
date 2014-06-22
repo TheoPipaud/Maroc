@@ -17,6 +17,9 @@ body{
     left: 0;
     z-index: 6;
 }
+.section .logo{
+
+}
 .section .content{
     display: table-cell;
     vertical-align: middle;
@@ -149,3 +152,8 @@ body{
 .oneBg.topRight .bg-2{ background-image: url(../images/bg2-2.jpg); }
 .oneBg.bottomLeft .bg-2{ background-image: url(../images/bg2-3.jpg); }
 .oneBg.bottomRight .bg-2{ background-image: url(../images/bg2-4.jpg); }
+
+.oneBg.topLeft .bg-3{ background-image: url(../images/bg3-1.jpg); }
+.oneBg.topRight .bg-3{ background-image: url(../images/bg3-2.jpg); }
+.oneBg.bottomLeft .bg-3{ background-image: url(../images/bg3-3.jpg); }
+.oneBg.bottomRight .bg-3{ background-image: url(../images/bg3-4.jpg); }
