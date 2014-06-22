@@ -102,19 +102,19 @@ $(document).ready(function() {
 		
 		$.each($(".oneBg .bg.active"),function(){
 			if($(this).parent().hasClass("topLeft")){
-				$(this).stop().animate({top : "0", left: "100%"}, 1000, "easeInOutCubic", function(){
+				$(this).stop().animate({top : "0", left: "100%"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
 			}else if($(this).parent().hasClass("topRight")){
-				$(this).stop().animate({top : "100%", left: "0"}, 1000, "easeInOutCubic", function(){
+				$(this).stop().animate({top : "100%", left: "0"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
 			}else if($(this).parent().hasClass("bottomLeft")){
-				$(this).stop().animate({top : "-100%", left: "0"}, 1000, "easeInOutCubic", function(){
+				$(this).stop().animate({top : "-100%", left: "0"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
 			}else{
-				$(this).stop().animate({top : "0", left: "-100%"}, 1000, "easeInOutCubic", function(){
+				$(this).stop().animate({top : "0", left: "-100%"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
 			}
