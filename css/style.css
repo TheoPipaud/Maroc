@@ -118,10 +118,10 @@ body{
     position: relative;
     top: 10px;
     opacity: 0;
-    -webkit-transition:all 400ms ease-out;
-    -moz-transition:all 400ms ease-out;
-    -o-transition:all 400ms ease-out;
-    transition:all 400ms ease-out;
+    -webkit-transition:all 500ms ease;
+    -moz-transition:all 500ms ease;
+    -o-transition:all 500ms ease;
+    transition:all 500ms ease;
 }
 .state.active{
     top: 0px;
