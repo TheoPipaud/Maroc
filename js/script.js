@@ -28,21 +28,21 @@ $(document).ready(function() {
 		$("body").addClass("loaded");
 	});
 
-	function initBg(id){
-		$("#section"+id).css({"display":"table", "opacity":1});
-		$.each($(".oneBg .bg"),function(){
-			if($(this).hasClass("bg-"+id)){
-				$(this).addClass("active");
-			}else{
-				$(this).addClass("inactive");
-			}
-		});
-		$navEnabled = true;
+	var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
+ 
+	if (document.attachEvent){
+	    document.attachEvent("on"+mousewheelevt, scroll);
+	}else if(document.addEventListener){
+	    document.addEventListener(mousewheelevt, scroll, false);
 	}
-	
-	$(window).bind('mousewheel', function(event){
+
+	function scroll(e){
 		if($navEnabled == true){
-		    if(event.originalEvent.wheelDelta >= 0){
+			
+			$evt=window.event || e;
+			$delta=$evt.detail? $evt.detail*(-120) : $evt.wheelDelta;
+
+		    if($delta >= 0){
 		    	$newId = $currentSection-1 ;
 		    	if($newId>0){
 		    		app_router.navigate("section/"+$newId, {trigger: true});
@@ -54,6 +54,10 @@ $(document).ready(function() {
 		        }
 		    }
 		}
+	}
+
+	$("body").bind('mousewheel', function(event){
+		
 	});
 
 	$('a[href^="#"]').click(function(e) {
@@ -65,7 +69,31 @@ $(document).ready(function() {
     	return false;
     });
 
+	$(".open-menu").mouseenter(function(){
+		$(".menu").stop().animate({"left":0}, 500, "easeInOutCubic", function(){
+
+		});
+	});
+	$(".menu").mouseleave(function(){
+		$(".menu").stop().animate({"left":"-460px"}, 500, "easeInOutCubic");
+	});
+
+    // ------------------- FUNCTIONS -------------------
+
+	function initBg(id){
+		$("#section"+id).css({"display":"table", "opacity":1});
+		$.each($(".oneBg .bg"),function(){
+			if($(this).hasClass("bg-"+id)){
+				$(this).addClass("active");
+			}else{
+				$(this).addClass("inactive");
+			}
+		});
+		$navEnabled = true;
+	}
+
 	function moveBg(id){
+		console.log("launch anim");
 		$counter = 0;
 		$(".section").animate({opacity:0},300, function(){
 			

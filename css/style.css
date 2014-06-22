@@ -2,9 +2,7 @@ p,h1,h1,h3{
     font-family: Georgia, sans-serif;
 }
 body{
-    /*background: url(images/background-step1.png) no-repeat center center;*/
-    background-size: cover;
-    background-attachment: fixed;
+    overflow: hidden;
 }
 .section{
     height: 100%;
@@ -17,8 +15,15 @@ body{
     left: 0;
     z-index: 6;
 }
-.section .logo{
-
+.open-menu{
+    display: block;
+    width: 21px;
+    height: 15px;
+    background: url(images/icon-ham.png) no-repeat center center;
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    z-index: 9;
 }
 .section .content{
     display: table-cell;
@@ -102,11 +107,12 @@ body{
 .menu{
     display: block;
     height: 100%;
-    width: 500px;
-    background: rgba(0,0,0,0.4);
+    width: 460px;
+    background: rgba(0,0,0,0.9);
     position: fixed;
     top: 0;
     z-index: 10;
+    left: -460px;
 }
 .oneBg{
     height: 50%;
