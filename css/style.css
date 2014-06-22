@@ -8,8 +8,8 @@ body{
     height: 100%;
     width: 100%;
     overflow: hidden;
-    opacity: 0;
-    display: none;
+    opacity: 1;
+    display: table;
     position: absolute;
     top: 0;
     left: 0;
@@ -47,8 +47,11 @@ body{
     position: absolute;
     left: 50%;
     margin-left:-216px;
-    top: -155px;
+    top: -135px;
     z-index: 1;
+}
+.section .section-head span.step.active{
+    top: -155px;
 }
 .section .section-title{
     color: white;
@@ -65,10 +68,17 @@ body{
 .section .section-head:after{
     content:"";
     height: 1px;
-    width: 200px;
+    width: 0;
     display: block;
     background: rgba(255,255,255,0.6);
     margin: 70px auto 0 auto;
+    -webkit-transition:all 300ms ease;
+    -moz-transition:all 300ms ease;
+    -o-transition:all 300ms ease;
+    transition:all 300ms ease;
+}
+.section .section-head.active:after{
+    width: 200px;
 }
 .section .content .text p{
     color: white;
@@ -103,6 +113,19 @@ body{
 #background{
     height: 100%;
     width: 100%;
+}
+.state{
+    position: relative;
+    top: 10px;
+    opacity: 0;
+    -webkit-transition:all 400ms ease-out;
+    -moz-transition:all 400ms ease-out;
+    -o-transition:all 400ms ease-out;
+    transition:all 400ms ease-out;
+}
+.state.active{
+    top: 0px;
+    opacity: 1;
 }
 .menu{
     display: block;

@@ -17,6 +17,7 @@ $(document).ready(function() {
 	});
 
 	app_router.on('route:section', function (id) {
+		console.log("router");
 		$navEnabled = false;
 		$currentSection = parseInt(id);
 		console.log("id : "+id);
@@ -34,26 +35,6 @@ $(document).ready(function() {
 	    document.attachEvent("on"+mousewheelevt, scroll);
 	}else if(document.addEventListener){
 	    document.addEventListener(mousewheelevt, scroll, false);
-	}
-
-	function scroll(e){
-		if($navEnabled == true){
-			
-			$evt=window.event || e;
-			$delta=$evt.detail? $evt.detail*(-120) : $evt.wheelDelta;
-
-		    if($delta >= 0){
-		    	$newId = $currentSection-1 ;
-		    	if($newId>0){
-		    		app_router.navigate("section/"+$newId, {trigger: true});
-		    	}
-		    }else{
-		    	$newId = $currentSection+1 ;
-		    	if($newId<=3){
-		        	app_router.navigate("section/"+$newId, {trigger: true});
-		        }
-		    }
-		}
 	}
 
 	$("body").bind('mousewheel', function(event){
@@ -78,7 +59,26 @@ $(document).ready(function() {
 		$(".menu").stop().animate({"left":"-460px"}, 500, "easeInOutCubic");
 	});
 
+    
     // ------------------- FUNCTIONS -------------------
+
+    function scroll(e){
+		if($navEnabled == true){
+			console.log("nav false");
+			$evt=window.event || e;
+			$delta=$evt.detail? $evt.detail*(-120) : $evt.wheelDelta;
+
+		    if($delta >= 0){
+		    	if($currentSection>=2){
+		    		app_router.navigate("section/"+($currentSection-1), {trigger: true});
+		    	}
+		    }else{
+		    	if($currentSection<=2){
+		        	app_router.navigate("section/"+($currentSection+1), {trigger: true});
+		        }
+		    }
+		}
+	}
 
 	function initBg(id){
 		$("#section"+id).css({"display":"table", "opacity":1});
@@ -95,9 +95,9 @@ $(document).ready(function() {
 	function moveBg(id){
 		console.log("launch anim");
 		$counter = 0;
-		$(".section").animate({opacity:0},300, function(){
-			
-			$(".section").css("display","none");
+		//$(".section").animate({opacity:0},300, function(){
+			$(".state, .section-head").removeClass("active");
+			//$(".section").css("display","none");
 			$(".oneBg .bg-"+id).removeClass("active inactive").addClass("pre-active");
 			
 			$.each($(".oneBg .bg.active"),function(){
@@ -120,7 +120,7 @@ $(document).ready(function() {
 				}
 			});
 
-		});
+		//});
 	}
 
 	function reinitBg(id, it){
@@ -129,8 +129,27 @@ $(document).ready(function() {
 		if($counter == 4){
 			$(".oneBg .pre-active").removeClass("pre-active").addClass("active");
 			$(".oneBg .inactive").css({top : "0", left: "0"});
-			$("#section"+id).css("display","table").animate({opacity:1},300);
-			$navEnabled = true;
+			//$("#section"+id).css("display","table").animate({opacity:1},300);
+			if(id==1){
+				$("#section1 .state").addClass("active");
+				window.setTimeout(function(){
+					$navEnabled = true;
+				},400);
+			}else{
+				$("#section"+id+" .step.state").addClass("active");
+				window.setTimeout(function(){
+					$("#section"+id+" .section-title.state").addClass("active");
+					window.setTimeout(function(){
+						$("#section"+id+" .text.state").addClass("active");
+						window.setTimeout(function(){
+							$("#section"+id+" .section-head").addClass("active");
+							$navEnabled = true;
+							console.log("nav true");
+						}, 200);
+					}, 200);
+				}, 200);
+				
+			}
 		}
 	}
 
