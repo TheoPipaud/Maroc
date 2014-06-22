@@ -6,12 +6,16 @@ body{
     background-size: cover;
     background-attachment: fixed;
 }
-/*.section{
+.section{
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background: rgba(0,0,0,0.3);
-    display: table;
+    opacity: 0;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
 }
 .section .content{
     display: table-cell;
@@ -87,8 +91,8 @@ body{
 }
 .section .content .text.column p{
     text-align: justify;
-}*/
-.main{
+}
+#background{
     height: 100%;
     width: 100%;
 }

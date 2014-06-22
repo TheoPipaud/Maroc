@@ -21,7 +21,7 @@ $(document).ready(function() {
 		}else{
 			moveBg(id);
 		}
-		$("body").addClass("section");
+		$("body").addClass("loaded");
 	});
 
 	function initBg(id){
@@ -36,38 +36,41 @@ $(document).ready(function() {
 
 	function moveBg(id){
 		$counter = 0;
-		$(".oneBg .bg-"+id).removeClass("active inactive").addClass("pre-active");
-		$.each($(".oneBg .bg.active"),function(){
-			if($(this).parent().hasClass("topLeft")){
-				$(this).animate({top : "0", left: "100%"}, 1000, "easeInOutCubic", function(){
-					$(this).removeClass("active pre-active").addClass("inactive");
-					reinitBg();
-				});
-			}else if($(this).parent().hasClass("topRight")){
-				$(this).animate({top : "100%", left: "0"}, 1000, "easeInOutCubic", function(){
-					$(this).removeClass("active pre-active").addClass("inactive");
-					reinitBg();
-				});
-			}else if($(this).parent().hasClass("bottomLeft")){
-				$(this).animate({top : "-100%", left: "0"}, 1000, "easeInOutCubic", function(){
-					$(this).removeClass("active pre-active").addClass("inactive");
-					reinitBg();
-				});
-			}else{
-				$(this).animate({top : "0", left: "-100%"}, 1000, "easeInOutCubic", function(){
-					$(this).removeClass("active pre-active").addClass("inactive");
-					reinitBg();
-				});
-			}
+		$(".section").animate({opacity:0},300, function(){
+			
+			$(".section").css("display","none");
+			$(".oneBg .bg-"+id).removeClass("active inactive").addClass("pre-active");
+			
+			$.each($(".oneBg .bg.active"),function(){
+				if($(this).parent().hasClass("topLeft")){
+					$(this).stop().animate({top : "0", left: "100%"}, 1000, "easeInOutCubic", function(){
+						reinitBg(id, $(this));
+					});
+				}else if($(this).parent().hasClass("topRight")){
+					$(this).stop().animate({top : "100%", left: "0"}, 1000, "easeInOutCubic", function(){
+						reinitBg(id, $(this));
+					});
+				}else if($(this).parent().hasClass("bottomLeft")){
+					$(this).stop().animate({top : "-100%", left: "0"}, 1000, "easeInOutCubic", function(){
+						reinitBg(id, $(this));
+					});
+				}else{
+					$(this).stop().animate({top : "0", left: "-100%"}, 1000, "easeInOutCubic", function(){
+						reinitBg(id, $(this));
+					});
+				}
+			});
+
 		});
 	}
 
-	function reinitBg(){
+	function reinitBg(id, it){
 		$counter++;
+		it.removeClass("active pre-active").addClass("inactive");
 		if($counter == 4){
 			$(".oneBg .pre-active").removeClass("pre-active").addClass("active");
 			$(".oneBg .inactive").css({top : "0", left: "0"});
-
+			$("#section"+id).css("display","table").animate({opacity:1},300);
 		}
 	}
 
