@@ -87,6 +87,7 @@ body{
     display: block;
     margin: 15px 0;
     font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 200;
 }
 .section .content .text.classic{
     width: 900px;

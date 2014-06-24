@@ -102,19 +102,19 @@ $(document).ready(function() {
 		
 		$.each($(".oneBg .bg.active"),function(){
 			if($(this).parent().hasClass("topLeft")){
-				$(this).stop().animate({top : "0", left: "100%"}, 1400, "easeInOutCubic", function(){
+				$(this).stop().animate({opacity : 0, top : "0", left: "100%"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
 			}else if($(this).parent().hasClass("topRight")){
-				$(this).stop().animate({top : "100%", left: "0"}, 1400, "easeInOutCubic", function(){
+				$(this).stop().animate({opacity : 0, top : "100%", left: "0"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
 			}else if($(this).parent().hasClass("bottomLeft")){
-				$(this).stop().animate({top : "-100%", left: "0"}, 1400, "easeInOutCubic", function(){
+				$(this).stop().animate({opacity : 0, top : "-100%", left: "0"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
 			}else{
-				$(this).stop().animate({top : "0", left: "-100%"}, 1400, "easeInOutCubic", function(){
+				$(this).stop().animate({opacity : 0, top : "0", left: "-100%"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
 			}
@@ -123,7 +123,7 @@ $(document).ready(function() {
 
 	function reinitBg(id, it){
 		$counter++;
-		it.removeClass("active pre-active").addClass("inactive");
+		it.css("opacity",1).removeClass("active pre-active").addClass("inactive");
 		if($counter == 4){
 			$(".oneBg .pre-active").removeClass("pre-active").addClass("active");
 			$(".oneBg .inactive").css({top : "0", left: "0"});
