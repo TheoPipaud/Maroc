@@ -150,14 +150,17 @@ body{
 .oneBg.bottomLeft{ bottom: 0; left: 0; }
 .oneBg.bottomRight{ bottom: 0; right: 0; }
 
+.oneBg.topLeft .bg{ bottom: 0; right: 0; }
+.oneBg.topRight .bg{ bottom: 0; left: 0; }
+.oneBg.bottomLeft .bg{ top: 0; right: 0; }
+.oneBg.bottomRight .bg{ top: 0; left: 0; }
+
 .oneBg .bg{
     background-size: cover;
     display: block;
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
 }
 .oneBg .bg.inactive{
     z-index: 1;

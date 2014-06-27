@@ -101,32 +101,38 @@ $(document).ready(function() {
 		$(".oneBg .bg-"+id).removeClass("active inactive").addClass("pre-active");
 		
 		$.each($(".oneBg .bg.active"),function(){
-			if($(this).parent().hasClass("topLeft")){
-				$(this).stop().animate({opacity : 0, top : "0", left: "100%"}, 1400, "easeInOutCubic", function(){
+			$parent = $(this).parent();
+			$parent.find(".pre-active").css({padding:"30px"}).stop().animate({padding:"0px"},1400);
+			if($parent.hasClass("topLeft")){
+				$(this).stop().animate({opacity : 0, right: "-100%"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
-			}else if($(this).parent().hasClass("topRight")){
-				$(this).stop().animate({opacity : 0, top : "100%", left: "0"}, 1400, "easeInOutCubic", function(){
+			}else if($parent.hasClass("topRight")){
+				$(this).stop().animate({opacity : 0, bottom : "-100%"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
-			}else if($(this).parent().hasClass("bottomLeft")){
-				$(this).stop().animate({opacity : 0, top : "-100%", left: "0"}, 1400, "easeInOutCubic", function(){
+			}else if($parent.hasClass("bottomLeft")){
+				$(this).stop().animate({opacity : 0, top : "-100%"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
 			}else{
-				$(this).stop().animate({opacity : 0, top : "0", left: "-100%"}, 1400, "easeInOutCubic", function(){
+				$(this).stop().animate({opacity : 0, left: "-100%"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
 				});
 			}
 		});
+
 	}
 
 	function reinitBg(id, it){
 		$counter++;
-		it.css("opacity",1).removeClass("active pre-active").addClass("inactive");
+		it.removeClass("active pre-active").addClass("inactive").css("opacity",1);
 		if($counter == 4){
 			$(".oneBg .pre-active").removeClass("pre-active").addClass("active");
-			$(".oneBg .inactive").css({top : "0", left: "0"});
+			$(".oneBg.topLeft .inactive").css({right : "0", bottom: "0"});
+			$(".oneBg.topRight .inactive").css({left : "0", bottom: "0"});
+			$(".oneBg.bottomLeft .inactive").css({right : "0", top: "0"});
+			$(".oneBg.bottomRight .inactive").css({left : "0", top: "0"});
 			animateSection(id);
 		}
 	}
