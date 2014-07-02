@@ -106,6 +106,7 @@ $(document).ready(function() {
 		$.each($(".oneBg .bg"),function(){
 			if($(this).hasClass("bg-"+id)){
 				$(this).addClass("active");
+				$(this).css({opacity:1});
 			}else{
 				$(this).addClass("inactive");
 			}
@@ -120,10 +121,10 @@ $(document).ready(function() {
 		$counter = 0;
 		$(".state, .section-head").removeClass("active");
 		$(".oneBg .bg-"+id).removeClass("active inactive").addClass("pre-active");
-		
+		$("#complete-bg").css({padding:"100px", top:"-100px", left:"-100px"}).removeClass().addClass("sct"+id).animate({padding:"0px", top:0, left:0}, 1400, "easeInOutCubic");
 		$.each($(".oneBg .bg.active"),function(){
 			$parent = $(this).parent();
-			$parent.find(".pre-active").css({padding:"30px"}).stop().animate({padding:"0px"},1400);
+			$(this).css({opacity:1});
 			if($parent.hasClass("topLeft")){
 				$(this).stop().animate({opacity : 0, right: "-100%"}, 1400, "easeInOutCubic", function(){
 					reinitBg(id, $(this));
@@ -148,9 +149,9 @@ $(document).ready(function() {
 
 	function reinitBg(id, it){
 		$counter++;
-		it.removeClass("active pre-active").addClass("inactive").css("opacity",1);
+		it.removeClass("active pre-active").addClass("inactive");
 		if($counter == 4){
-			$(".oneBg .pre-active").removeClass("pre-active").addClass("active");
+			$(".oneBg .pre-active").css({opacity:1}).removeClass("pre-active").addClass("active");
 			$(".oneBg.topLeft .inactive").css({right : "0", bottom: "0"});
 			$(".oneBg.topRight .inactive").css({left : "0", bottom: "0"});
 			$(".oneBg.bottomLeft .inactive").css({right : "0", top: "0"});

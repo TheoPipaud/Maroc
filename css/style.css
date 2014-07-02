@@ -162,6 +162,7 @@ body{
     height: 100%;
     width: 100%;
     position: absolute;
+    opacity: 0;
 }
 .oneBg .bg.inactive{
     z-index: 1;
@@ -191,3 +192,16 @@ body{
 .oneBg.topRight .bg-3{ background-image: url(../images/bg3-2.jpg); }
 .oneBg.bottomLeft .bg-3{ background-image: url(../images/bg3-3.jpg); }
 .oneBg.bottomRight .bg-3{ background-image: url(../images/bg3-4.jpg); }
+
+#complete-bg{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    background-size: cover !important;
+}
+#complete-bg.sct1{background: url(../images/bg1-complete.jpg) no-repeat center center;}
+#complete-bg.sct2{background: url(../images/bg2-complete.jpg) no-repeat center center;}
+#complete-bg.sct3{background: url(../images/bg3-complete.jpg) no-repeat center center;}
