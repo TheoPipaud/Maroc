@@ -15,16 +15,81 @@ body{
     left: 0;
     z-index: 6;
 }
-.open-menu{
-    display: block;
-    width: 21px;
-    height: 15px;
-    background: url(images/icon-ham.png) no-repeat center center;
+.navicon-button {
+    display: inline-block;
+    position: relative;
+    padding: 10px 0;
+    transition: 250ms;
+    cursor: pointer;
+    user-select: none;
+    opacity: .8;
     position: fixed;
     top: 40px;
     left: 40px;
-    z-index: 9;
+    z-index: 15;
 }
+.navicon:before, .navicon:after {
+  transition: 250ms;
+  background: white;
+}
+.navicon-button:hover {
+    transition: 500ms;
+    opacity: 1;
+}
+.navicon:before, .navicon:after {
+    transition: 250ms;
+}
+.navicon:after { top: -.825rem; }
+.navicon:before { top: .825rem; }
+.navicon {
+  position: relative;
+  width: 2.5em;
+  height: 2px;
+  transition: 500ms;
+  background: white;
+}
+.navicon:after, .navicon:before {
+  display: block;
+  content: "";
+  height: 2px;
+  width: 2.5rem;
+  position: absolute;
+  z-index: -1;
+  transition: 500ms;
+}
+.navicon:after { top: -12px; }
+.navicon:before { top: 12px; }
+.open:not(.steps) .navicon:before,
+.open:not(.steps) .navicon:after {
+  top: 0 !important;
+}
+.open .navicon:before,
+.open .navicon:after {
+  transition: 500ms;
+}
+.open.x .navicon {
+    background: transparent;
+}
+.open.x .navicon:after { 
+    transform: rotate(45deg); 
+    -moz-transform: rotate(45deg); 
+    -webkit-transform: rotate(45deg); 
+}  
+.open.x .navicon:before { 
+    transform: rotate(-45deg); 
+    -moz-transform: rotate(-45deg); 
+    -webkit-transform: rotate(-45deg); 
+} 
+.loading .navicon {
+  color: red;
+  box-shadow: inset 0 0;
+  transition: $transition-duration, box-shadow 0;
+}
+.loading .navicon { transition: 0; }
+
+
+
+
 .section .content{
     display: table-cell;
     vertical-align: middle;
@@ -130,14 +195,74 @@ body{
     opacity: 1;
 }
 .menu{
-    display: block;
+    display: none;
+    opacity: 0;
     height: 100%;
-    width: 460px;
+    width: 100%;
     background: rgba(0,0,0,0.9);
     position: fixed;
     top: 0;
     z-index: 10;
-    left: -460px;
+    left: 0;
+}
+nav{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-family: Georgia, sans-serif;
+}
+nav a{
+    color: white;
+    font-size: 0.875em;
+    text-decoration: none;
+    padding: 40px 0 20px 0;
+    display: block;
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+}
+nav a:hover .menu-step{
+    font-size: 1.5em;
+    top: 10px;
+}
+nav a:hover .title{
+    opacity: 1;
+}
+nav>a:last-child:after{
+    display: none;
+}
+nav a:after{
+    content: "";
+    display: block;
+    width: 160px;
+    height: 1px;
+    background: #52643f;
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    margin-left: -80px;
+}
+nav .menu-step{
+    color: #aedf5e;
+    font-size: 0.875em;
+    margin-bottom: 15px;
+    display: block;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 15px;
+    -webkit-transition:all 300ms ease;
+    -moz-transition:all 300ms ease;
+    -o-transition:all 300ms ease;
+    transition:all 300ms ease;
+}
+nav .title{
+    line-height: 20px;
+    -webkit-transition:all 300ms ease;
+    -moz-transition:all 300ms ease;
+    -o-transition:all 300ms ease;
+    transition:all 300ms ease;
+    opacity: 0.6;
 }
 .oneBg{
     height: 50%;

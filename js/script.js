@@ -41,22 +41,35 @@ $(document).ready(function() {
 		
 	});
 
-	$('a[href^="#"]').click(function(e) {
-		e.preventDefault();
-		if($navEnabled == true){
-			$link = $(this).attr('href');
-			app_router.navigate($link, {trigger: true});
+	$(".navicon-button").click(function(){
+		if($(this).hasClass("active")){
+			$(this).removeClass("active").addClass("inactive");
+			$(".menu").stop().animate({opacity:0}, 500, "easeInOutCubic", function(){
+				$(".menu").css("display","none");
+			});
+		}else{
+			$(this).removeClass("inactive").addClass("active");
+			$(".menu").css("display","table");
+			$(".menu").stop().animate({opacity:1}, 500, "easeInOutCubic");
 		}
-    	return false;
-    });
-
-	$(".open-menu").mouseenter(function(){
-		$(".menu").stop().animate({"left":0}, 500, "easeInOutCubic", function(){
-
-		});
 	});
-	$(".menu").mouseleave(function(){
-		$(".menu").stop().animate({"left":"-460px"}, 500, "easeInOutCubic");
+
+	$("a.navicon-button").click(function(){
+	  $(this).toggleClass("open");
+	});
+
+	$("nav a").click(function(e){
+		e.preventDefault();
+		console.log($navEnabled);
+		$link = $(this).attr('href');
+		if($navEnabled == true){
+			$(".navicon-button").removeClass("active").addClass("inactive");
+			$(".menu").stop().animate({opacity:0}, 500, "easeInOutCubic", function(){
+				$(".menu").css("display","none");
+				console.log($link);
+				app_router.navigate($link, {trigger: true});
+			});
+		}
 	});
 
 	resize();
