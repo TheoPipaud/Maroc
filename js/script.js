@@ -42,6 +42,7 @@ $(document).ready(function() {
 	});
 
 	$(".navicon-button").click(function(){
+		$(this).toggleClass("open");
 		if($(this).hasClass("active")){
 			$(this).removeClass("active").addClass("inactive");
 			$(".menu").stop().animate({opacity:0}, 500, "easeInOutCubic", function(){
@@ -52,10 +53,6 @@ $(document).ready(function() {
 			$(".menu").css("display","table");
 			$(".menu").stop().animate({opacity:1}, 500, "easeInOutCubic");
 		}
-	});
-
-	$("a.navicon-button").click(function(){
-	  $(this).toggleClass("open");
 	});
 
 	$("nav a").click(function(e){
@@ -107,7 +104,7 @@ $(document).ready(function() {
 		    		app_router.navigate("section/"+($currentSection-1), {trigger: true});
 		    	}
 		    }else{
-		    	if($currentSection<=2){
+		    	if($currentSection<=5){
 		        	app_router.navigate("section/"+($currentSection+1), {trigger: true});
 		        }
 		    }

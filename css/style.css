@@ -129,7 +129,9 @@ body{
 .section span.colored{
     color: #addf5e;
 }
-
+.section span.bold{
+    font-weight: 700;
+}
 .section .section-head:after{
     content:"";
     height: 1px;
@@ -155,8 +157,17 @@ body{
     font-weight: 200;
 }
 .section .content .text.classic{
-    width: 900px;
+    width: 850px;
     margin: auto;
+}
+.section .content .text.classic.w850{
+    width: 850px;
+}
+.section .content .text.classic.w750{
+    width: 750px;
+}
+.section .content .text.classic.w900{
+    width: 900px;
 }
 .section .content .text.classic p{
     text-align: center;
@@ -318,6 +329,21 @@ nav .title{
 .oneBg.bottomLeft .bg-3{ background-image: url(../images/bg3-3.jpg); }
 .oneBg.bottomRight .bg-3{ background-image: url(../images/bg3-4.jpg); }
 
+.oneBg.topLeft .bg-4{ background-image: url(../images/bg1-1.jpg); }
+.oneBg.topRight .bg-4{ background-image: url(../images/bg1-2.jpg); }
+.oneBg.bottomLeft .bg-4{ background-image: url(../images/bg1-3.jpg); }
+.oneBg.bottomRight .bg-4{ background-image: url(../images/bg1-4.jpg); }
+
+.oneBg.topLeft .bg-5{ background-image: url(../images/bg2-1.jpg); }
+.oneBg.topRight .bg-5{ background-image: url(../images/bg2-2.jpg); }
+.oneBg.bottomLeft .bg-5{ background-image: url(../images/bg2-3.jpg); }
+.oneBg.bottomRight .bg-5{ background-image: url(../images/bg2-4.jpg); }
+
+.oneBg.topLeft .bg-6{ background-image: url(../images/bg3-1.jpg); }
+.oneBg.topRight .bg-6{ background-image: url(../images/bg3-2.jpg); }
+.oneBg.bottomLeft .bg-6{ background-image: url(../images/bg3-3.jpg); }
+.oneBg.bottomRight .bg-6{ background-image: url(../images/bg3-4.jpg); }
+
 #complete-bg{
     display: block;
     width: 100%;
@@ -330,3 +356,6 @@ nav .title{
 #complete-bg.sct1{background: url(../images/bg1-complete.jpg) no-repeat center center;}
 #complete-bg.sct2{background: url(../images/bg2-complete.jpg) no-repeat center center;}
 #complete-bg.sct3{background: url(../images/bg3-complete.jpg) no-repeat center center;}
+#complete-bg.sct4{background: url(../images/bg1-complete.jpg) no-repeat center center;}
+#complete-bg.sct5{background: url(../images/bg2-complete.jpg) no-repeat center center;}
+#complete-bg.sct6{background: url(../images/bg3-complete.jpg) no-repeat center center;}
