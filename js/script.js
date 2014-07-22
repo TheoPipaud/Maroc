@@ -29,7 +29,7 @@ $(document).ready(function() {
 		$("body").addClass("loaded");
 	});
 
-	var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
+	var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" 
  
 	if (document.attachEvent){
 	    document.attachEvent("on"+mousewheelevt, scroll);
@@ -104,7 +104,7 @@ $(document).ready(function() {
 		    		app_router.navigate("section/"+($currentSection-1), {trigger: true});
 		    	}
 		    }else{
-		    	if($currentSection<=5){
+		    	if($currentSection<=6){
 		        	app_router.navigate("section/"+($currentSection+1), {trigger: true});
 		        }
 		    }
@@ -171,8 +171,8 @@ $(document).ready(function() {
 	}
 
 	function animateSection(id){
-		if(id==1){
-			$("#section1 .state").addClass("active");
+		if(id==1 || id==7){
+			$("#section"+id+" .state").addClass("active");
 			window.setTimeout(function(){
 				$navEnabled = true;
 			},400);
