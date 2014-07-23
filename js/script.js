@@ -17,10 +17,12 @@ $(document).ready(function() {
 	});
 
 	app_router.on('route:section', function (id) {
-		console.log("router");
 		$navEnabled = false;
 		$currentSection = parseInt(id);
-		console.log("id : "+id);
+		$(".sidebar a").removeClass('active');
+		if(id>=2 && id<=6){
+			$(".sidebar>a:nth-child("+(id-1)+")").addClass("active");
+		}
 		if($("body").attr("class") == undefined){
 			initBg(id);
 		}else{
@@ -42,7 +44,6 @@ $(document).ready(function() {
 	});
 
 	$(".navicon-button").click(function(){
-		$(this).toggleClass("open");
 		if($(this).hasClass("active")){
 			$(this).removeClass("active").addClass("inactive");
 			$(".menu").stop().animate({opacity:0}, 500, "easeInOutCubic", function(){
@@ -63,9 +64,19 @@ $(document).ready(function() {
 			$(".navicon-button").removeClass("active").addClass("inactive");
 			$(".menu").stop().animate({opacity:0}, 500, "easeInOutCubic", function(){
 				$(".menu").css("display","none");
-				console.log($link);
 				app_router.navigate($link, {trigger: true});
 			});
+		}
+	});
+
+	$(".sidebar a").click(function(e){
+		e.preventDefault();
+		console.log($navEnabled);
+		$link = $(this).attr('href');
+		if($navEnabled == true){
+			$(".navicon-button").removeClass("active").addClass("inactive");
+			$(".menu").css("display","none");
+			app_router.navigate($link, {trigger: true});
 		}
 	});
 
