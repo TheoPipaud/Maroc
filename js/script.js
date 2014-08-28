@@ -20,8 +20,10 @@ $(document).ready(function() {
 		$navEnabled = false;
 		$currentSection = parseInt(id);
 		$(".sidebar a").removeClass('active');
-		if(id>=2 && id<=6){
+		$("nav a").removeClass('active');
+		if(id>=2){
 			$(".sidebar>a:nth-child("+(id-1)+")").addClass("active");
+			$("nav>a:nth-child("+(id-1)+")").addClass("active");
 		}
 		if($("body").attr("class") == undefined){
 			initBg(id);
@@ -58,7 +60,6 @@ $(document).ready(function() {
 
 	$("nav a").click(function(e){
 		e.preventDefault();
-		console.log($navEnabled);
 		$link = $(this).attr('href');
 		if($navEnabled == true){
 			$(".navicon-button").removeClass("active").addClass("inactive");
@@ -71,7 +72,6 @@ $(document).ready(function() {
 
 	$(".sidebar a").click(function(e){
 		e.preventDefault();
-		console.log($navEnabled);
 		$link = $(this).attr('href');
 		if($navEnabled == true){
 			$(".navicon-button").removeClass("active").addClass("inactive");
@@ -106,7 +106,6 @@ $(document).ready(function() {
 
     function scroll(e){
 		if($navEnabled == true){
-			console.log("nav false");
 			$evt=window.event || e;
 			$delta=$evt.detail? $evt.detail*(-120) : $evt.wheelDelta;
 
@@ -123,7 +122,8 @@ $(document).ready(function() {
 	}
 
 	function initBg(id){
-		$("#section"+id).css({"display":"table", "opacity":1});
+		$(".section").css({"display":"none"});
+		$("#section"+id).css({"display":"table"});
 		$.each($(".oneBg .bg"),function(){
 			if($(this).hasClass("bg-"+id)){
 				$(this).addClass("active");
@@ -133,16 +133,26 @@ $(document).ready(function() {
 			}
 		});
 		window.setTimeout(function(){
-			animateSection(id);
+			animateSection(id, function(){
+				hideOtherSections(id);
+			});
 		},500);
 	}
 
+	function hideOtherSections(id){
+		for(var sec=0; sec<$('.section').length; sec++){
+			if(sec != id){
+				$('#section'+sec).css('display','none');
+			}
+		}
+	}
+
 	function moveBg(id){
-		console.log("launch anim");
 		$counter = 0;
+		$("#section"+id).css({"display":"table"});
 		$(".state, .section-head").removeClass("active");
 		$(".oneBg .bg-"+id).removeClass("active inactive").addClass("pre-active");
-		$("#complete-bg").css({padding:"100px", top:"-100px", left:"-100px"}).removeClass().addClass("sct"+id).animate({padding:"0px", top:0, left:0}, 1400, "easeInOutCubic");
+		$("#complete-bg").removeClass().addClass(" active sct"+id);
 		$.each($(".oneBg .bg.active"),function(){
 			$parent = $(this).parent();
 			$(this).css({opacity:1});
@@ -163,9 +173,7 @@ $(document).ready(function() {
 					reinitBg(id, $(this));
 				});
 			}
-		});
-
-		
+		});	
 	}
 
 	function reinitBg(id, it){
@@ -177,15 +185,19 @@ $(document).ready(function() {
 			$(".oneBg.topRight .inactive").css({left : "0", bottom: "0"});
 			$(".oneBg.bottomLeft .inactive").css({right : "0", top: "0"});
 			$(".oneBg.bottomRight .inactive").css({left : "0", top: "0"});
-			animateSection(id);
+			$("#complete-bg").removeClass("active");
+			animateSection(id, function(){
+				hideOtherSections(id);
+			});
 		}
 	}
 
-	function animateSection(id){
+	function animateSection(id, callback){
 		if(id==1 || id==7){
 			$("#section"+id+" .state").addClass("active");
 			window.setTimeout(function(){
 				$navEnabled = true;
+				callback();
 			},400);
 		}else{
 			$("#section"+id+" .step.state").addClass("active");
@@ -195,7 +207,9 @@ $(document).ready(function() {
 					$("#section"+id+" .text.state").addClass("active");
 					window.setTimeout(function(){
 						$("#section"+id+" .section-head").addClass("active");
+						$("#section"+(id-1)+", #section"+(id+1)).css({"display":"none"});
 						$navEnabled = true;
+						callback();
 					}, 200);
 				}, 200);
 			}, 200);

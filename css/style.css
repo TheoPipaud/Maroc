@@ -91,7 +91,7 @@ body{
     position: fixed;
     left: 50px;
     top: 50%;
-    margin-top: -128px;
+    margin-top: -152px;
     z-index: 9;
 }
 .sidebar a{
@@ -103,6 +103,7 @@ body{
     text-align: center;
     margin: 32px 0;
     width: 40px;
+    height: 25px;
     text-align: center;
     -webkit-transition:all 300ms ease;
     -moz-transition:all 300ms ease;
@@ -115,7 +116,7 @@ body{
 .sidebar a.active:after{
     height: 2px;
 }
-.sidebar a:hover:after{
+.sidebar a:hover:after, .sidebar a.active:after{
     width: 100%;
 }
 .sidebar a:after{
@@ -147,8 +148,12 @@ body{
     color: white;
     font-family: 'Source Sans Pro', sans-serif;
     line-height: 26px;
+    text-decoration: none;
     margin: 30px 0;
     font-weight: 200;
+}
+.contact .adr:hover{
+    text-decoration: underline;
 }
 .contact .share a{
     display: inline-block;
@@ -304,11 +309,11 @@ nav a{
     width: 400px;
     margin: 0 auto;
 }
-nav a:hover .menu-step{
+nav a:hover .menu-step, nav a.active .menu-step{
     font-size: 1.5em;
     top: 10px;
 }
-nav a:hover .title{
+nav a:hover .title, nav a.active .title{
     opacity: 1;
 }
 nav>a:last-child:after{
@@ -334,10 +339,10 @@ nav .menu-step{
     width: 100%;
     text-align: center;
     top: 15px;
-    -webkit-transition:all 300ms ease;
-    -moz-transition:all 300ms ease;
-    -o-transition:all 300ms ease;
-    transition:all 300ms ease;
+    -webkit-transition:all 200ms ease;
+    -moz-transition:all 200ms ease;
+    -o-transition:all 200ms ease;
+    transition:all 200ms ease;
 }
 nav .title{
     line-height: 20px;
@@ -353,6 +358,7 @@ nav .title{
     display: block;
     position: absolute;
     overflow: hidden;
+    display: block;
 }
 .oneBg.topLeft{ top: 0; left: 0; }
 .oneBg.topRight{ top: 0; right: 0; }
@@ -422,13 +428,31 @@ nav .title{
 .oneBg.bottomRight .bg-7{ background-image: url(../images/bg7-4.jpg); }
 
 #complete-bg{
-    display: block;
+    z-index: 0;
     width: 100%;
     height: 100%;
     position: absolute;
     top:0;
     left: 0;
     background-size: cover !important;
+    transform: scale(1.25);
+    -o-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    -webkit-transform: scale(1.25);
+}
+#complete-bg.active{
+    z-index: 1;
+    transition: transform 1200ms ease-in-out;
+    -ms-transition: transform 1200ms ease-in-out;
+    -o-transition: transform 1200ms ease-in-out;
+    -moz-transition: transform 1200ms ease-in-out;
+    -webkit-transition: transform 1200ms ease-in-out;
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
 }
 #complete-bg.sct1{background: url(../images/bg1-complete.jpg) no-repeat center center;}
 #complete-bg.sct2{background: url(../images/bg2-complete.jpg) no-repeat center center;}
