@@ -208,14 +208,14 @@ body{
     text-decoration: underline;
 }
 .contact .share {
-    margin-top: 20px;
+    margin-bottom: 40px;
 }
 .contact .share a{
     display: inline-block;
     vertical-align: top;
-    height: 30px;
-    width: 30px;
-    margin: 0 15px;
+    height: 80px;
+    width: 80px;
+    margin: 0 30px;
 }
 
 .contact .share a.fb{background: url(images/icon-fb.png) no-repeat center center;}
@@ -406,6 +406,31 @@ nav .title{
     -o-transition:all 300ms ease;
     transition:all 300ms ease;
     opacity: 0.6;
+}
+.footer{
+    position: fixed;
+    height: 35px;
+    line-height: 35px;
+    background: rgba(0,0,0,0.3);
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+.footer p{
+    color: white;
+    opacity: 0.7;
+    font-weight: 100;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.8em;
+    letter-spacing: 0px;
+}
+.footer a{
+    color:white;
+    text-decoration: none;
+    font-weight: normal;
+}
+.footer a:hover{
+    text-decoration: underline;
 }
 .oneBg{
     height: 50%;
