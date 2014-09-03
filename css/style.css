@@ -4,6 +4,58 @@ p,h1,h1,h3{
 body{
     overflow: hidden;
 }
+.loader{
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: rgba(17, 17, 17, 1);
+    position: fixed;
+    z-index: 1000;
+}
+.loader>div.bar{
+    display: block;
+    position: absolute;
+    height: 5px;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    background: #addf5e;
+}
+.loader>div.text{
+    display: block;
+    position: absolute;
+    height: 100px;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+}
+.loader>.text p{
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    color: #addf5e;
+    height: auto;
+}
+.loader>.text span{
+    font-size: 1.6em;
+    position: relative;
+    margin-right: 4px;
+}
+.loader>img{
+    position: absolute;
+    opacity: 0;
+    left: 50%;
+    top: 50%;
+    margin-left: -111px;
+    margin-top: -81px;
+    -webkit-transition:all 2500ms ease-in-out;
+    -moz-transition:all 2500ms ease-in-quad;
+    -o-transition:all 2500ms ease-in-quad;
+    transition:all 2500ms ease-in-out;
+}
+.loader>img.active{
+    opacity: 1;
+}
 .section{
     height: 100%;
     width: 100%;

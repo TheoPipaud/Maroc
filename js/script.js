@@ -1,5 +1,6 @@
 $currentSection = 1;
 $navEnabled = false;
+var loaderLength = 3000;
 
 $(document).ready(function() {
 
@@ -9,6 +10,26 @@ $(document).ready(function() {
 		    "section/:id": "section",
 		}
 	});
+
+
+	$(".loader>div").animate({width:"100%"}, loaderLength, function(){
+		$(".loader").animate({opacity:0}, 500, function(){
+			$(".loader").css({display:"none"});
+		});
+	});
+	var loaderVal = 0;
+	var loaderText = $('.loader .text p span');
+	var loaderInterval = window.setInterval(function(){
+		loaderVal++;
+		loaderText.text(loaderVal);
+		if(loaderVal == 100){
+			clearInterval(loaderInterval);
+		}
+	}, loaderLength/120);
+
+	window.setTimeout(function(){
+		$(".loader>img").addClass("active");
+	},800);
 
 	var app_router = new AppRouter;
 
@@ -41,20 +62,15 @@ $(document).ready(function() {
 	    document.addEventListener(mousewheelevt, scroll, false);
 	}
 
-	$("body").bind('mousewheel', function(event){
-		
-	});
-
 	$(".navicon-button").click(function(){
 		if($(this).hasClass("active")){
 			$(this).removeClass("active").addClass("inactive");
-			$(".menu").stop().animate({opacity:0}, 500, "easeInOutCubic", function(){
+			$(".menu").removeClass("opened").stop().animate({opacity:0}, 500, "easeInOutCubic", function(){
 				$(".menu").css("display","none");
 			});
 		}else{
 			$(this).removeClass("inactive").addClass("active");
-			$(".menu").css("display","table");
-			$(".menu").stop().animate({opacity:1}, 500, "easeInOutCubic");
+			$(".menu").css("display","table").addClass("opened").stop().animate({opacity:1}, 500, "easeInOutCubic");
 		}
 	});
 
@@ -105,7 +121,7 @@ $(document).ready(function() {
     }
 
     function scroll(e){
-		if($navEnabled == true){
+		if($navEnabled == true && !$('.menu').hasClass('opened')){
 			$evt=window.event || e;
 			$delta=$evt.detail? $evt.detail*(-120) : $evt.wheelDelta;
 
@@ -122,8 +138,7 @@ $(document).ready(function() {
 	}
 
 	function initBg(id){
-		$(".section").css({"display":"none"});
-		$("#section"+id).css({"display":"table"});
+		showSection(id);
 		$.each($(".oneBg .bg"),function(){
 			if($(this).hasClass("bg-"+id)){
 				$(this).addClass("active");
@@ -196,6 +211,7 @@ $(document).ready(function() {
 		if(id==1 || id==7){
 			$("#section"+id+" .state").addClass("active");
 			window.setTimeout(function(){
+				showSection(id);
 				$navEnabled = true;
 				callback();
 			},400);
@@ -207,13 +223,18 @@ $(document).ready(function() {
 					$("#section"+id+" .text.state").addClass("active");
 					window.setTimeout(function(){
 						$("#section"+id+" .section-head").addClass("active");
-						$("#section"+(id-1)+", #section"+(id+1)).css({"display":"none"});
+						showSection(id);
 						$navEnabled = true;
 						callback();
 					}, 200);
 				}, 200);
 			}, 200);
 		}
+	}
+
+	function showSection(id){
+		$(".section").css({"display":"none"});
+		$("#section"+(id)).css({"display":"table"});
 	}
 
 	Backbone.history.start();
