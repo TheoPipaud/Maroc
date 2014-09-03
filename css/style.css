@@ -187,7 +187,10 @@ body{
     color: white;
     font-family: Georgia, sans-serif;
     font-size: 1.938em;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
+}
+.contact .tel{
+    margin-bottom: 20px;
 }
 .contact .tel p{
     color: white;
@@ -541,3 +544,25 @@ nav .title{
 #complete-bg.sct5{background: url(../images/bg5-complete.jpg) no-repeat center center;}
 #complete-bg.sct6{background: url(../images/bg6-complete.jpg) no-repeat center center;}
 #complete-bg.sct7{background: url(../images/bg7-complete.jpg) no-repeat center center;}
+
+
+
+@media screen and (max-width: 1023px){
+    .loader>div.bar, .loader>div.text{
+        display: none;
+    }
+    body{
+        overflow: auto;
+    }
+    .section{
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+    .state{
+        opacity: 1;
+    }
+    .section .section-title{
+        
+    }
+}
