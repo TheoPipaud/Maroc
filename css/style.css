@@ -239,7 +239,7 @@ body{
 
 .partenaires{
     display: block;
-    height: 50px;
+    height: auto;
     width: 100%;
     text-align: center;
     margin-top: 40px;
@@ -627,7 +627,7 @@ nav .title{
     .sidebar{
         display: none;
     }
-    .section .content .text.classic.w850, .section .content .text.classic.w900, .section .content .text.classic.w750{
+    .section .content .text.classic.w550, .section .content .text.classic.w850, .section .content .text.classic.w900, .section .content .text.classic.w750{
         width: auto;
     }
     #section2 .section-head{background: url(../images/bg2-complete.jpg) no-repeat center center;}
@@ -686,7 +686,7 @@ nav .title{
     .contact .share a{
         height: 60px;
         width: 60px;
-        margin: 0 15px;
+        margin: 0 5px;
         background-size: cover !important;
     }
 }
