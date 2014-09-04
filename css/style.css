@@ -219,16 +219,34 @@ body{
 .contact .share a{
     display: inline-block;
     vertical-align: top;
-    height: 80px;
-    width: 80px;
-    margin: 0 30px;
+    height: 60px;
+    width: 60px;
+    margin: 0 10px;
+    opacity: 0.8;
+    -webkit-transition:all 200ms ease;
+    -moz-transition:all 200ms ease;
+    -o-transition:all 200ms ease;
+    transition:all 200ms ease;
+}
+.contact .share a:hover{
+    opacity: 1;
 }
 
-.contact .share a.fb{background: url(images/icon-fb.png) no-repeat center center;}
-.contact .share a.tw{background: url(images/icon-tw.png) no-repeat center center;}
-.contact .share a.insta{background: url(images/icon-insta.png) no-repeat center center;}
-.contact .share a.mail{background: url(images/icon-mail.png) no-repeat center center;}
+.contact .share a.fb{background: url(images/icon-fb.png) no-repeat center center; background-size: cover;}
+.contact .share a.tw{background: url(images/icon-tw.png) no-repeat center center; background-size: cover;}
+.contact .share a.insta{background: url(images/icon-insta.png) no-repeat center center; background-size: cover;}
+.contact .share a.mail{background: url(images/icon-mail.png) no-repeat center center; background-size: cover;}
 
+.partenaires{
+    display: block;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+}
+.partenaires a{
+    margin: 0 10px;
+}
 .section .content{
     display: table-cell;
     vertical-align: middle;
@@ -288,7 +306,7 @@ body{
 }
 .section .content .text p{
     color: white;
-    font-size: 1em;
+    font-size: 0.913em;
     letter-spacing: 1px;
     line-height: 22px;
     display: block;
