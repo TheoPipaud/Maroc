@@ -101,23 +101,25 @@ $(document).ready(function() {
 
 		resize();
 
-		window.onresize = function(){
+		$(window).resize(function(){
 			resize();
-		}
+		});
 	    
 	    // ------------------- FUNCTIONS -------------------
 
 	    function resize(){
-	    	$body = $("body");
+	    	var body = $("body");
+	    	console.log($(window).height());
+	    	$('body>div').css('height',$(window).height()+'px');
 	    	
-	    	if($body.height()%2 != 0){
-	    		$("#background").css("height",($body.height()+1)+"px");
+	    	if(body.height()%2 != 0){
+	    		$("#background").css("height",(body.height()+1)+"px");
 	    	}else{
 	    		$("#background").css("height","100%");
 	    	}
 
-	    	if($body.width()%2 != 0){
-	    		$("#background").css("width",($body.width()+1)+"px");
+	    	if(body.width()%2 != 0){
+	    		$("#background").css("width",(body.width()+1)+"px");
 	    	}else{
 	    		$("#background").css("width","100%");
 	    	}
