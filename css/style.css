@@ -551,6 +551,9 @@ nav .title{
     .loader>div.bar, .loader>div.text{
         display: none;
     }
+    .contact .tel p{
+        color: white !important;
+    }
     body{
         overflow: auto;
     }
@@ -575,8 +578,12 @@ nav .title{
         position: absolute;
         top: 50%;
         left: 50%;
-        margin-top: -81px;
-        margin-left: -111px;
+        margin-top: -121px;
+        margin-left: -131px;
+    }
+    .loader>img{
+        margin-left: -131px;
+        margin-top: -121px;
     }
     #background{
         display: none;
@@ -610,7 +617,7 @@ nav .title{
         padding: 20% 0;
     }
     .section .section-title{
-        font-size: 1.5em;
+        font-size: 1.8em;
         line-height: 30px;
         padding: 0 20px;
     }
@@ -626,7 +633,7 @@ nav .title{
         font-size: 0.913em;
     }
     .section .content .text.classic, .section .content .text.column{
-        margin: 40px 0;
+        margin: 30px 0;
         padding: 0 20px;
         width: auto;
         text-align: left;
@@ -642,10 +649,16 @@ nav .title{
     .contact .title{
         font-size: 1.5em;
         margin-top: 40px;
-        padding: 20px 0;
+        padding: 0 20px;
     }
     .footer {
         position: relative;
         margin-top: 40px;
+    }
+    .contact .share a{
+        height: 60px;
+        width: 60px;
+        margin: 0 15px;
+        background-size: cover !important;
     }
 }
