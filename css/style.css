@@ -284,11 +284,8 @@ body{
 }
 .section .content .text p{
     color: white;
-    /*font-size: 0.875em;*/
-    font-size: 1em;
-    /*line-height: 20px;*/
-    line-height: 22px;
-    letter-spacing: 1px;
+    font-size: 0.875em;
+    line-height: 20px;
     display: block;
     margin: 15px 0;
     font-family: 'Source Sans Pro', sans-serif;
@@ -301,11 +298,6 @@ body{
 .section .content .text.classic.w850{
     width: 850px;
 }
-
-.section .content .text.classic.w550{
-    width: 650px;
-}
-
 .section .content .text.classic.w750{
     width: 750px;
 }
