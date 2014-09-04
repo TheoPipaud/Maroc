@@ -21,18 +21,16 @@ $(document).ready(function() {
 	window.setTimeout(function(){
 		$(".loader>img").addClass("active");
 	},800);
-
-	if (document.documentElement.clientWidth > 1023) {
-
+	
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	}else{
+		
 		var AppRouter = Backbone.Router.extend({
 			routes: {
 			    "": "home",
 			    "section/:id": "section",
 			}
 		});
-
-
-		
 
 		var app_router = new AppRouter;
 
@@ -109,7 +107,6 @@ $(document).ready(function() {
 
 	    function resize(){
 	    	var body = $("body");
-	    	console.log($(window).height());
 	    	$('body>div').css('height',$(window).height()+'px');
 	    	
 	    	if(body.height()%2 != 0){
