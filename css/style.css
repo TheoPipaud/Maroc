@@ -6,6 +6,7 @@ html{
 }
 body{
     overflow: hidden;
+    background: rgb(119, 119, 119);
 }
 .loader{
     display: block;

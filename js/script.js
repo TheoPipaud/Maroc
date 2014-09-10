@@ -1,8 +1,23 @@
 $currentSection = 1;
 $navEnabled = false;
 var loaderLength = 3000;
+var completePics = ['images/bg1-complete.jpg', 'images/bg2-complete.jpg', 'images/bg3-complete.jpg', 'images/bg4-complete.jpg', 'images/bg5-complete.jpg', 'images/bg6-complete.jpg', 'images/bg7-complete.jpg'];
 
 $(document).ready(function() {
+
+	// Preload pics
+
+	function preloadimages(arr){
+	    var newimages=[];
+	    var arr=(typeof arr!="object")? [arr] : arr;
+	    for (var i=0; i<arr.length; i++){
+	        newimages[i]=new Image();
+	        newimages[i].src=arr[i];
+	    }
+	}
+ 
+	preloadimages(completePics);
+
 
 	$(".loader>div").animate({width:"100%"}, loaderLength, function(){
 		$(".loader").animate({opacity:0}, 500, function(){
@@ -55,7 +70,25 @@ $(document).ready(function() {
 			$("body").addClass("loaded");
 		});
 
-		var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" 
+		function scroll(e){
+			console.log("ca scroll ienb");
+			if($navEnabled == true && !$('.menu').hasClass('opened')){
+				$evt=window.event || e;
+				$delta=$evt.detail? $evt.detail*(-120) : $evt.wheelDelta;
+
+			    if($delta >= 0){
+			    	if($currentSection>=2){
+			    		app_router.navigate("section/"+($currentSection-1), {trigger: true});
+			    	}
+			    }else{
+			    	if($currentSection<=6){
+			        	app_router.navigate("section/"+($currentSection+1), {trigger: true});
+			        }
+			    }
+			}
+		}
+
+		var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel"; 
 	 
 		if (document.attachEvent){
 		    document.attachEvent("on"+mousewheelevt, scroll);
@@ -81,7 +114,7 @@ $(document).ready(function() {
 			if($navEnabled == true){
 				$(".navicon-button").removeClass("active").addClass("inactive");
 				$(".menu").stop().animate({opacity:0}, 500, "easeInOutCubic", function(){
-					$(".menu").css("display","none");
+					$(".menu").css("display","none").removeClass('opened');
 					app_router.navigate($link, {trigger: true});
 				});
 			}
@@ -97,11 +130,7 @@ $(document).ready(function() {
 			}
 		});
 
-		resize();
-
-		$(window).resize(function(){
-			resize();
-		});
+		
 	    
 	    // ------------------- FUNCTIONS -------------------
 
@@ -238,6 +267,12 @@ $(document).ready(function() {
 			$(".section").css({"display":"none"});
 			$("#section"+(id)).css({"display":"table"});
 		}
+
+		resize();
+
+		$(window).resize(function(){
+			resize();
+		});
 
 		Backbone.history.start();
 
