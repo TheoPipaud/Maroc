@@ -334,7 +334,7 @@ body{
     width: 900px;
 }
 .section .content .text.classic p{
-    text-align: center;
+    text-align: justify;
 }
 .section .content .text.classic>div{
     display: inline-block;
